@@ -195,6 +195,7 @@ package org.tio.core.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -489,15 +490,9 @@ public class ByteBufferUtils {
 	 * 
 	 */
 	public static String getUtf8(byte[] bytes) {
-		String text;
-		try {
-			text = new String(bytes, "utf-8");
-			return text;
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(e);
-		}
+		return new String(bytes, StandardCharsets.UTF_8);
 	}
-	
+
 	/**
 	* 读取byte
 	* @param buffer
